@@ -1,0 +1,20 @@
+{
+  "name": "moviesReview",
+  "version": "1.0.0",
+  "description": "My classy Nuxt.js project",
+  "author": "ivan111",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.9.5",
+    "loadash": "^1.0.0",
+    "lodash": "^4.17.15",
+    "nuxt": "^2.0.0"
+  },
+  "devDependencies": {}
+}
