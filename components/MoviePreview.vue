@@ -3,7 +3,7 @@
       <article>
           <div 
               class="movie-thumbnail"
-              :style="{ backgroundImage: 'url(' + cover_image + ')' }"></div>
+              :style="{ backgroundImage: 'url(https://' + cover_image + ')' }"></div>
           <div class="movie-content">
               <h1>{{ title }}</h1>
               <h1>Vote average: {{ vote_average }}\10</h1>
