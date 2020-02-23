@@ -50,7 +50,6 @@ export default {
   methods:{
     postFavourite(){
         const favourtite = this.singleMovie
-        console.log(favourtite)
     }
 
   }

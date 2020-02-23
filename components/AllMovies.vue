@@ -13,7 +13,16 @@
       <input class="input" @input="searching" type="text" v-model="search" placeholder="Search...">
   </div>
     <MoviesList :movies="loadedMovies" />
-    
+     <div class="noresults" v-if="loadedMovies == 0">
+        <article>
+        <div class="noresults-thumbnail"></div>
+        <div class="noresults-content">
+          <h1></h1>
+          <h1></h1>
+          <h1>There are no such movies here!</h1>
+        </div>
+      </article>
+    </div>
   </div>
 </template>
 
@@ -63,6 +72,9 @@ export default {
   margin-top: 1px;
   height: 30px;
   }
+.noresults-thumbnail {
+  background-image: url('https://media.giphy.com/media/vupbanYe5f1Xq/giphy.gif');
+}
   @media (max-width: 768px) {
   .filterBox {
     flex-direction: column;

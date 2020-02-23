@@ -34,11 +34,25 @@ export default {
   */
   buildModules: [
   ],
+
+  auth:{
+    strategies:{
+      local:{
+        endpoints:{
+          login: { url: 'http://127.0.0.1:3333/users/login', method: 'post', propertyName: 'token' },
+       // logout: { url: '/api/auth/logout', method: 'delete' },
+          user: { url: 'http://127.0.0.1:3333/users/getuser/', method: 'get', propertyName: 'data' }
+        },
+        tokenType:''
+      }
+    }
+  },
   /*
   ** Nuxt.js modules
   */
   modules: [
     '@nuxtjs/axios',
+    '@nuxtjs/auth'
   ],
   axios: {
     // proxyHeaders: false
@@ -50,6 +64,7 @@ export default {
     /*
     ** You can extend webpack config here
     */
+    
     extend (config, ctx) {
     }
   }

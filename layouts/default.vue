@@ -1,8 +1,30 @@
 <template>
   <div>
+    <TheHeader @sidenavToggle="displaySidenav = !displaySidenav" />
+    <TheSidenav
+      :show="displaySidenav"
+      @close="displaySidenav = false"
+     />
     <nuxt />
   </div>
 </template>
+
+<script>
+import TheHeader from "@/components/Navigation/TheHeader";
+import TheSidenav from "@/components/Navigation/TheSidenav";
+
+export default {
+  components:{
+    TheHeader,
+    TheSidenav
+  },
+  data(){
+    return{
+      displaySidenav:false
+    }
+  }
+}
+</script>
 
 <style>
 html {
@@ -115,6 +137,29 @@ a {
 a:hover .movie-content,
 a:active .movie-content {
   background-color: #ccc;
+}
+
+
+/*  No result for search or no favourite movies
+ */
+ .noresults{
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 2px #ccc;
+  background-color: #ccc;
+  width: 50%;
+  margin-left: 25%;
+  text-align: center;
+  cursor: pointer;
+}
+.noresults-content{
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+.noresults-thumbnail {
+  width: 100%;
+  height: 250px;
+  background-position: center;
+  background-size: cover;
 }
 @media (min-width: 760px) {
   .movie-preview {
