@@ -1,7 +1,7 @@
 <template>
 <div>
  <!--Single movie details by ID -->
-  <div class="intro" :style="{ backgroundImage:'url(https://' + singleMovie.background_image + ')' }">
+  <div class="intro" :style="{ backgroundImage:'url(' + singleMovie.background_image + ')' }">
   <h1>
     {{singleMovie.title}}
   </h1>
@@ -9,7 +9,7 @@
     <div>
      <article class="post-preview">
        <div   class="post-thumbnail" 
-              :style="{ backgroundImage:'url(https://' + singleMovie.cover_image + ')' }"></div>
+              :style="{ backgroundImage:'url(' + singleMovie.cover_image + ')' }"></div>
         <div class="post-content">
           <h1>{{ singleMovie.title }}</h1>
           <hr>

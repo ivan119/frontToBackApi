@@ -22,16 +22,18 @@ export default {
     data(){
         return{
             form:{
-                email:"222@gmail.com",
-                password:"112233qq"
+                email:"",
+                password:""
             }
         }
     },
     methods:{
          async login(){
-         //  this.$auth.loginWith('local',this.form)
+          this.$auth.loginWith('local',{
+            data:this.form
+          })
          // await this.$axios.post('http://127.0.0.1:3333/users/login',this.form);
-          await this.$auth.login({ data: this.form });
+       //   await this.$auth.login({ data: this.form });
           this.$router.push({name:'index'})
         }
     }

@@ -33,8 +33,10 @@ export default {
     methods:{
         async register(){
             await this.$axios.post('http://127.0.0.1:3333/users/register',this.form);
-            this.$auth.login({data: this.form});
-            this.$router.push({name:'index'})
+             this.$auth.loginWith('local',{
+                 data:this.form
+             })
+            this.$router.push('/')
         }
     }
 }

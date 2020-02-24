@@ -41,9 +41,10 @@ export default {
         endpoints:{
           login: { url: 'http://127.0.0.1:3333/users/login', method: 'post', propertyName: 'token' },
        // logout: { url: '/api/auth/logout', method: 'delete' },
-          user: { url: 'http://127.0.0.1:3333/users/getuser/', method: 'get', propertyName: 'data' }
+          user: { url: 'http://127.0.0.1:3333/users/getuser' , method: 'get', propertyName: 'data' },
+       //   logout: false
         },
-        tokenType:''
+       // tokenType:''
       }
     }
   },
