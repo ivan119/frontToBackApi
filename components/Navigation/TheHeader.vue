@@ -9,13 +9,16 @@
     <div class="navigation-items">
        <ul v-if="$auth.loggedIn"
             class="nav-list">
-        <li class="nav-item"><a>{{$auth.user.username}}</a></li>
-        <li class="nav-item"><a @click="$auth.logout()">Logout</a></li>
+        <li class="nav-item"><a>{{$auth.user.username}}</a> </li>
+        <li class="nav-item"> <nuxt-link to="/favourites">Favourites</nuxt-link></li>
+        <li class="nav-item"><nuxt-link to="/about">About</nuxt-link></li>
+        <li class="nav-item" @click="$auth.logout()"><a>Logout</a></li>
       </ul>
       <ul v-else
             class="nav-list">
         <li class="nav-item"><nuxt-link to="/login">Login</nuxt-link></li>
         <li class="nav-item"><nuxt-link to="/register">Register</nuxt-link></li>
+        <li class="nav-item"><nuxt-link to="/about">About</nuxt-link></li>
       </ul>
     </div>
   </header>
@@ -96,5 +99,6 @@ export default {
 .nav-item a:active,
 .nav-item a.nuxt-link-active {
   color: #3b8070;
+  cursor: pointer;
 }
 </style>

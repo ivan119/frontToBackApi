@@ -12,6 +12,8 @@
         class="nav-list"
         @click="$emit('close')">
         <li class="nav-item"><a>{{$auth.user.username}}</a></li>
+        <li class="nav-item"> <nuxt-link to="/favourites">Favourites</nuxt-link></li>
+        <li class="nav-item"><nuxt-link to="/about">About</nuxt-link></li>
         <li class="nav-item"><a @click="$auth.logout()">Logout</a></li>
       </ul>
       <ul v-else
@@ -19,6 +21,7 @@
         @click="$emit('close')">
         <li class="nav-item"><nuxt-link to="/login">Login</nuxt-link></li>
         <li class="nav-item"><nuxt-link to="/register">Register</nuxt-link></li>
+        <li class="nav-item"><nuxt-link to="/about">About</nuxt-link></li>
       </ul>
     </div>
   </transition>
