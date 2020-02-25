@@ -8,7 +8,13 @@
     <div
       v-if="show"
       class="sidenav">
-      <ul
+      <ul v-if="$auth.loggedIn" 
+        class="nav-list"
+        @click="$emit('close')">
+        <li class="nav-item"><a>{{$auth.user.username}}</a></li>
+        <li class="nav-item"><a @click="$auth.logout()">Logout</a></li>
+      </ul>
+      <ul v-else
         class="nav-list"
         @click="$emit('close')">
         <li class="nav-item"><nuxt-link to="/login">Login</nuxt-link></li>

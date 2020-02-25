@@ -29,7 +29,7 @@ export default {
     },
     methods:{
          async login(){
-          this.$auth.loginWith('local',{
+          await this.$auth.loginWith('local',{
             data:this.form
           })
          // await this.$axios.post('http://127.0.0.1:3333/users/login',this.form);

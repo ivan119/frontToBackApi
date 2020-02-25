@@ -9,8 +9,8 @@
     <div class="navigation-items">
        <ul v-if="$auth.loggedIn"
             class="nav-list">
-        <li class="nav-item"><a>{{$auth.user.email}}</a></li>
-        <li class="nav-item"><nuxt-link to="/loguout">Logout</nuxt-link></li>
+        <li class="nav-item"><a>{{$auth.user.username}}</a></li>
+        <li class="nav-item"><a @click="$auth.logout()">Logout</a></li>
       </ul>
       <ul v-else
             class="nav-list">

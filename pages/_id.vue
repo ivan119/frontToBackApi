@@ -58,6 +58,9 @@ export default {
 </script>
 
 <style scoped>
+.intro h1 {
+    background-color:#3792cb;
+}
 .post-preview {
   margin-top: 2.5%;
   border: 1px solid #ccc;

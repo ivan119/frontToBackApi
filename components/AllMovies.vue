@@ -56,7 +56,10 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.intro h1 {
+    background-color:red;
+}
 .filterBox {
   margin-left: 6.4%;
   margin-right: 6.4%;

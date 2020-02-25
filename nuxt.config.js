@@ -18,7 +18,7 @@ export default {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  loading: { color: '#3b8070' },
   /*
   ** Global CSS
   */
@@ -39,12 +39,12 @@ export default {
     strategies:{
       local:{
         endpoints:{
-          login: { url: 'http://127.0.0.1:3333/users/login', method: 'post', propertyName: 'token' },
-       // logout: { url: '/api/auth/logout', method: 'delete' },
-          user: { url: 'http://127.0.0.1:3333/users/getuser' , method: 'get', propertyName: 'data' },
-       //   logout: false
+          login: { url: 'http://127.0.0.1:3333/users/login', method: 'post', propertyName: 'token.token', },
+          logout: { url: 'http://127.0.0.1:3333/users/logout', method: 'delete' },
+          user: { url: 'http://127.0.0.1:3333/users/getuser' , method: 'get', propertyName: false },
         },
-       // tokenType:''
+          tokenRequired: true,
+          tokenType:'Bearer'
       }
     }
   },
