@@ -7,10 +7,10 @@
   </h1>
   </div> 
     <div>
-     <article class="post-preview">
-       <div   class="post-thumbnail" 
+     <article class="movie-preview">
+       <div   class="movie-thumbnail" 
               :style="{ backgroundImage:'url(' + singleMovie.cover_image + ')' }"></div>
-        <div class="post-content">
+        <div class="movie-content">
           <h1>{{ singleMovie.title }}</h1>
           <hr>
           <h3>Average Vote: {{ singleMovie.vote_average }}/10</h3>
@@ -21,7 +21,12 @@
           <h4>{{ singleMovie.overview }}</h4>
           <hr>
           <br>
+          <div v-if="$auth.loggedIn">
           <button @click="postFavourite()">Add to favourites</button>
+          </div>
+           <div v-else>
+          <button @click="notLoggedIn()">Add to favourites</button>
+          </div>
         </div>
       </article>
     </div>
@@ -48,10 +53,13 @@ export default {
       }
   },
   methods:{
-    postFavourite(){
-        const favourtite = this.singleMovie
+    async postFavourite(){
+        await this.$axios.post('http://127.0.0.1:3333/movies/' + this.singleMovie.id)
+        alert('Movie added to favourites!')
+    },
+    notLoggedIn(){
+      alert('Please Login or Register to add movie to favourites!')
     }
-
   }
 
 }
@@ -61,7 +69,7 @@ export default {
 .intro h1 {
     background-color:#3792cb;
 }
-.post-preview {
+.movie-preview {
   margin-top: 2.5%;
   border: 1px solid #ccc;
   box-shadow: 0 2px 2px #ccc;
@@ -71,14 +79,14 @@ export default {
   width: 80%;
   margin-left: 10%;
 }
-.post-thumbnail {
+.movie-thumbnail {
   min-width: 40%;
   height: 500px;
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
 }
-.post-content {
+.movie-content {
   padding: 10px;
   text-align: center;
   margin-top: 8%;
@@ -86,26 +94,23 @@ export default {
   width: 60%;
 }
 @media (max-width: 1300px){
-  .post-content{
+  .movie-content{
     margin-right: 3%;
   }
 }
 @media (max-width: 768px) {
-  .post {
-    width: 600px;
-    margin: auto;
-  }
-  .post-preview {
+
+  .movie-preview {
     flex-direction: column;
   }
-  .post-details {
+  .movie-details {
     flex-direction: row;
   }
-  .post-thumbnail {
+  .movie-thumbnail {
   width: 100%;
   height: 355px;
   }
-  .post-content {
+  .movie-content {
     margin-top: 0%;
     margin-right: 0%;
     width: 100%;

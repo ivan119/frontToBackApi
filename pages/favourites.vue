@@ -3,6 +3,9 @@
     <section class="intro">
       <h1>Your Favourite Movies</h1>
     </section>
+    <div>
+        hello
+    </div>
         <div class="noresults">
             <article>
                 <div class="noresults-thumbnail"></div>
@@ -16,9 +19,16 @@
 </template>
 
 <script>
-
+import axios from 'axios'
 export default { 
-
+  data(){
+    return{
+      favouriteMovies:{}
+    }
+  },
+  async asyncData({params}) {
+    const res = await axios.get('http://127.0.0.1:3333/movies/')
+  }
 }
 </script>
 

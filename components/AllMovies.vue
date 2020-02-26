@@ -72,8 +72,9 @@ export default {
 .input {
   width: 100%;
   border-radius: 3px;
-  margin-top: 1px;
-  height: 30px;
+  margin: 3px;
+  margin-top: 2px;
+  height: 35px;
   }
 .noresults-thumbnail {
   background-image: url('https://media.giphy.com/media/vupbanYe5f1Xq/giphy.gif');

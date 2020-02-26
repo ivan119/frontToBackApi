@@ -54,6 +54,7 @@ html {
   text-decoration: none;
   padding: 10px 30px;
   flex: 12%;
+  margin: 2px;
 }
 
 .button--green:hover {
