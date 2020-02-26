@@ -11,9 +11,9 @@
                         <h2> About Us</h2>
                         <p>Universal Pictures is an American film studio, owned by Comcast through its wholly owned subsidiary NBCUniversal,
                            and is one of Hollywood's "Big Six" film studios. Its production studios are at 100 Universal City Plaza Drive in Universal City,
-                            California. Distribution and other corporate offices are in New York City. Universal Studios is a member of the Motion Picture Association of America (MPAA).
-                             Universal was founded in 1912 by the German Carl Laemmle (pronounced "LEM-lee"), Mark Dintenfass, Charles O. Baumann, Adam Kessel, Pat Powers, William Swanson,
-                              David Horsley, Robert H. Cochrane, and Jules Brulatour.</p>
+                           California. Distribution and other corporate offices are in New York City. Universal Studios is a member of the Motion Picture Association of America (MPAA).
+                           Universal was founded in 1912 by the German Carl Laemmle (pronounced "LEM-lee"), Mark Dintenfass, Charles O. Baumann, Adam Kessel, Pat Powers, William Swanson,
+                           David Horsley, Robert H. Cochrane, and Jules Brulatour.</p>
                     </div>
                 </div>
             </div>
@@ -35,7 +35,7 @@
             <div class="contact-us-form">
                 <div class="container">
                     
-                <!--  This form is buged!!
+              
 
                     <form class="form" id="myForm" @submit.prevent="submitForm">
                         <div class="row" >
@@ -58,7 +58,7 @@
                         </div>
                     </form>
 
-                                               ---> 
+                                          
                 </div>
             </div>
         </section>
@@ -71,7 +71,7 @@ import { required, email, minLength, maxLength } from 'vuelidate/lib/validators'
   export default {
     data() {
       return {
-          user:'',
+          name:'',
           email:'',
           subject:'',
           text:''
@@ -99,9 +99,9 @@ import { required, email, minLength, maxLength } from 'vuelidate/lib/validators'
       }
     },
     methods: {
-      async submitForm() {
+       async submitForm() {
         // console.log(this.formInput)
-        alert('Thank You! The Form Is Submitted Successfully!')
+        await alert('Thank You! The Form Is Submitted Successfully!')
         this.$router.push({name:'index'})
       }
     }
@@ -167,8 +167,8 @@ import { required, email, minLength, maxLength } from 'vuelidate/lib/validators'
   width: 50%;
   margin-left: 25%;
   position: absolute;
-  margin-top: -21px;
-  padding-bottom: 10px;
+  margin-top: -20px;
+  padding-bottom: 19px;
   color: red;
   white-space: nowrap;
 }
