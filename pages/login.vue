@@ -33,17 +33,17 @@ export default {
         }
     },
     validations:{
-      form:{
-        email:{
-        required,
-        email
-      },
-      password:{
-        required,
-        minLength: minLength(4),
-        maxLength: maxLength(25)
-      }
-    }
+        form:{
+            email:{
+            required,
+            email
+          },
+          password:{
+            required,
+            minLength: minLength(4),
+            maxLength: maxLength(25)
+          }
+       }
     },
     methods:{
          async login(){

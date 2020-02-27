@@ -3,7 +3,7 @@
     <section class="intro">
       <h1>Your Favourite Movies</h1>
     </section>
-      <div v-if="favouriteMovies > 0">
+      <div v-if="favouriteMovies.length >0 ">
         {{favouriteMovies}}
       </div>
         <div v-else 

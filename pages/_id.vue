@@ -58,7 +58,7 @@ export default {
         alert('Movie added to favourites!')
     },
     notLoggedIn(){
-      alert('Please Login or Register to add movie to favourites!')
+      alert('Please Register or Login so you can add movie to favourites!')
     }
   }
 

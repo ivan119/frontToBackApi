@@ -34,9 +34,6 @@
         <!--Contact us form-->      
             <div class="contact-us-form">
                 <div class="container">
-                    
-              
-
                     <form class="form" id="myForm" @submit.prevent="submitForm">
                         <div class="row" >
                            <div class="col-md-4" >
@@ -56,9 +53,7 @@
                                 <button type="submit" :disabled="$v.$invalid" class="button--green">Submit</button>
                             </div>
                         </div>
-                    </form>
-
-                                          
+                    </form>                                 
                 </div>
             </div>
         </section>
@@ -167,7 +162,7 @@ import { required, email, minLength, maxLength } from 'vuelidate/lib/validators'
   width: 50%;
   margin-left: 25%;
   position: absolute;
-  margin-top: -20px;
+  margin-top: -19px;
   padding-bottom: 19px;
   color: red;
   white-space: nowrap;
