@@ -41,7 +41,7 @@ export default {
       local:{
         endpoints:{
           login: { url: 'http://127.0.0.1:3333/users/login', method: 'post', propertyName: 'token.token', },
-          logout: { url: 'http://127.0.0.1:3333/users/logout', method: 'delete' },
+          logout: false,
           user: { url: 'http://127.0.0.1:3333/users/getuser' , method: 'get', propertyName: false },
         },
           tokenRequired: true,

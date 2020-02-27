@@ -7,9 +7,12 @@
          <form class="form" id="myForm" @submit.prevent="login">
             <div class="row" >
               <div class="">
-                 <input type="email" v-model="form.email" class="form-control" id="email" placeholder="Email">
-                 <input type="password" v-model="form.password" class="form-control" id="subject" placeholder="Password">
-                 <button type="submit" class="button--green">Login</button>
+                 <input type="email" @blur="$v.form.email.$touch()" v-model="form.email" class="form-control" id="email" placeholder="Email">
+                 <p v-if="!$v.form.email.email" class="err">Please provide a valid email!</p>  
+                 <input type="password" @blur="$v.form.password.$touch()" v-model="form.password" class="form-control" id="subject" placeholder="Password">
+                 <p v-if="!$v.form.password.minLength" class="err">Password is to short! 4 characters min!</p>
+                 <p v-if="!$v.form.password.maxLength" class="err">Password is to Long! 20 characters max!</p> 
+                 <button type="submit" :disabled="$v.$invalid" class="button--green">Login</button>
               </div>
             </div>
         </form>
@@ -18,22 +21,35 @@
 </template>
 
 <script>
+import { required, email, minLength, maxLength } from 'vuelidate/lib/validators'
+
 export default {
     data(){
         return{
-            form:{
-                email:"",
-                password:""
-            }
+          form:{
+              email:"",
+              password:""
+          } 
         }
+    },
+    validations:{
+      form:{
+        email:{
+        required,
+        email
+      },
+      password:{
+        required,
+        minLength: minLength(4),
+        maxLength: maxLength(25)
+      }
+    }
     },
     methods:{
          async login(){
           await this.$auth.loginWith('local',{
             data:this.form
           })
-         // await this.$axios.post('http://127.0.0.1:3333/users/login',this.form);
-       //   await this.$auth.login({ data: this.form });
           this.$router.push({name:'index'})
         }
     }
@@ -66,7 +82,14 @@ export default {
     opacity: .8;
     transition: all 1s;
 }
-
+.err {
+  width: 50%;
+  position: absolute;
+  margin-top: -25px;
+  padding-bottom: 19px;
+  color: red;
+  white-space: nowrap;
+}
 .button--green {
   display: inline-block;
   width: 100%;

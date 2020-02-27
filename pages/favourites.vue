@@ -3,10 +3,11 @@
     <section class="intro">
       <h1>Your Favourite Movies</h1>
     </section>
-    <div>
-        hello
-    </div>
-        <div class="noresults">
+      <div v-if="favouriteMovies > 0">
+        {{favouriteMovies}}
+      </div>
+        <div v-else 
+             class="noresults">
             <article>
                 <div class="noresults-thumbnail"></div>
                 <div class="noresults-content">
@@ -26,8 +27,11 @@ export default {
       favouriteMovies:{}
     }
   },
-  async asyncData({params}) {
-    const res = await axios.get('http://127.0.0.1:3333/movies/')
+  created(){
+    const res = this.$axios.get('http://127.0.0.1:3333/users/getFavourite/' + this.$auth.user.id)
+      .then((res)=>{
+        this.favouriteMovies = res.data.data
+      })
   }
 }
 </script>
