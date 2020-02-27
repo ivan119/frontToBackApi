@@ -1,18 +1,38 @@
 <template>
     <div>
     <section class="intro">
-      <h1>Your Favourite Movies</h1>
+      <h1 v-if="$auth.user">{{$auth.user.username}} Favourite Movies</h1>
+      <h1 v-else>Favourite Movies</h1>
     </section>
-      <div v-if="favouriteMovies.length >0 ">
-        {{favouriteMovies}}
+      <div v-if="favouriteMovies.length > 0 ">
+     <section class="movies-list">
+      <!--Loop for all movies from store  -->    
+        <nuxt-link v-for="movie in favouriteMovies" :key="movie.id" :to="'/' + movie.id"  class="post-preview">
+        <article class="movie-preview" >
+          <div
+                class="movie-thumbnail" 
+                :style="{ backgroundImage:'url('+ movie.cover_image + ')'}"></div>
+          <div class="movie-content">
+            <h1>{{ movie.title }}</h1>
+            <h1>Average Vote: {{ movie.vote_average }}/10</h1>
+            <h1>Release Date: {{ movie.release_date }}</h1>
+          </div>
+        </article>
+      </nuxt-link>
+      </section>
       </div>
         <div v-else 
              class="noresults">
             <article>
                 <div class="noresults-thumbnail"></div>
-                <div class="noresults-content">
-                <h1>You don't have any favourite movies yet!</h1>
-                <h3>Be sure to chose some and then come back :) </h3>
+                <div v-if="$auth.user"
+                      class="noresults-content">
+                  <h1>You don't have any favourite movies yet!</h1>
+                  <h3>Be sure to chose some and then come back :) </h3>
+                </div>
+                 <div v-else
+                      class="noresults-content">
+                  <h1>Please register or login to chose favourite movies!</h1>
                 </div>
            </article>
         </div>
@@ -28,10 +48,12 @@ export default {
     }
   },
   created(){
-    const res = this.$axios.get('http://127.0.0.1:3333/users/getFavourite/' + this.$auth.user.id)
-      .then((res)=>{
-        this.favouriteMovies = res.data.data
-      })
+    if(this.$auth.user){
+      const res = this.$axios.get('http://127.0.0.1:3333/users/getFavourite/' + this.$auth.user.id)
+        .then((res)=>{
+          this.favouriteMovies = res.data.data
+        })
+    }
   }
 }
 </script>
