@@ -72,7 +72,7 @@ export default {
 .form{
     margin-top: 5%;
     border: 1px solid #aeaeae;
-    padding: 50px 50px;
+    padding: 50px 25px;
     margin-left: 25%;
     margin-right: 25%;
     border-radius: 5px;
@@ -88,14 +88,14 @@ export default {
     background-color: transparent;
     border: 1px solid #aeaeae;
     border-radius: 3px;
-    margin-bottom: 32px;
+    margin-bottom: 20px;
     opacity: .8;
     transition: all 1s;
 }
 .err {
   width: 50%;
   position: absolute;
-  margin-top: -25px;
+  margin-top: -22px;
   padding-bottom: 19px;
   color: red;
   white-space: nowrap;

@@ -7,7 +7,7 @@
       <div v-if="favouriteMovies.length > 0 ">
      <section class="movies-list">
       <!--Loop for all movies from store  -->    
-        <nuxt-link v-for="movie in favouriteMovies" :key="movie.id" :to="'/' + movie.id"  class="post-preview">
+        <nuxt-link v-for="movie in favouriteMovies.reverse()" :key="movie.id" :to="'/' + movie.id"  class="post-preview">
         <article class="movie-preview" >
           <div
                 class="movie-thumbnail" 

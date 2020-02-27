@@ -41,11 +41,6 @@ export default {
       singleMovie:{}
     }
   },
-  props:{
-    title:'',
-    overview:'',
-  },
-
   async asyncData({params}){
     const res = await axios.get('http://127.0.0.1:3333/movies/'+ params.id)
       return{

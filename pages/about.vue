@@ -109,7 +109,6 @@ import { required, email, minLength, maxLength } from 'vuelidate/lib/validators'
     margin-top: 2%;
     margin-left: 15%;
     margin-right: 15%;
-    
 }
 .section-title h2 {
     position: relative;
@@ -147,14 +146,14 @@ import { required, email, minLength, maxLength } from 'vuelidate/lib/validators'
     margin-left: 25%;
     margin-right: 25%;
     height: 50px;
-    padding: 6px 12px;
+    padding: 12px 12px;
     font-size: 14px;
     line-height: 21px;
     color: #555;
     background-color: transparent;
     border: 1px solid #aeaeae;
     border-radius: 3px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     opacity: .8;
     transition: all 1s;
 }
@@ -162,7 +161,7 @@ import { required, email, minLength, maxLength } from 'vuelidate/lib/validators'
   width: 50%;
   margin-left: 25%;
   position: absolute;
-  margin-top: -19px;
+  margin-top: -25px;
   padding-bottom: 19px;
   color: red;
   white-space: nowrap;

@@ -62,7 +62,7 @@ export default {
 .form{
     margin-top: 5%;
     border: 1px solid #aeaeae;
-    padding: 50px 50px;
+    padding: 50px 25px;
     margin-left: 25%;
     margin-right: 25%;
     border-radius: 5px;
@@ -85,7 +85,7 @@ export default {
 .err {
   width: 50%;
   position: absolute;
-  margin-top: -25px;
+  margin-top: -27px;
   padding-bottom: 19px;
   color: red;
   white-space: nowrap;
