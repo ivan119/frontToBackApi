@@ -57,11 +57,15 @@ export default {
     },
     methods:{
         async register(){
+          try {
             await this.$axios.post('http://127.0.0.1:3333/users/register',this.form);
             await this.$auth.loginWith('local',{
                  data:this.form
              })
             this.$router.push('/')
+          } catch (error) {
+            
+          }
         }
     }
 }
@@ -76,6 +80,7 @@ export default {
     margin-left: 25%;
     margin-right: 25%;
     border-radius: 5px;
+    background-color: white;
     }
 .form-control{
     display: block;
@@ -88,7 +93,7 @@ export default {
     background-color: transparent;
     border: 1px solid #aeaeae;
     border-radius: 3px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     opacity: .8;
     transition: all 1s;
 }

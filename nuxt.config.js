@@ -12,7 +12,8 @@ export default {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.8.2/css/all.css' }
     ]
   },
   /*
@@ -28,7 +29,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    {src: '~/plugins/Vuelidate'}
+    {src: '~/plugins/Vuelidate'},
   ],
   /*
   ** Nuxt.js dev-modules
@@ -37,6 +38,17 @@ export default {
   ],
 
   auth:{
+    plugins: [ '~/plugins/auth.js' ],
+    resetOnError: true,
+
+    redirect:{
+      login:'/login',
+      logout: '/login',
+      callback:'/index'
+    },
+
+    localStorage:false,
+
     strategies:{
       local:{
         endpoints:{
@@ -48,16 +60,14 @@ export default {
           tokenType:'Bearer'
       }
     },
-    redirect:{
-      logout: '/login'
-    }
   },
   /*
   ** Nuxt.js modules
   */
   modules: [
     '@nuxtjs/axios',
-    '@nuxtjs/auth'
+    '@nuxtjs/auth',
+    'nuxt-sweetalert2'
   ],
   axios: {
     // proxyHeaders: false

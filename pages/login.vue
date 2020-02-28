@@ -47,10 +47,14 @@ export default {
     },
     methods:{
          async login(){
-          await this.$auth.loginWith('local',{
-            data:this.form
+          try {
+            await this.$auth.loginWith('local',{
+              data:this.form
           })
-          this.$router.push({name:'index'})
+           this.$router.push({name:'index'})
+          } catch (error) {
+
+          }
         }
     }
       
@@ -66,6 +70,7 @@ export default {
     margin-left: 25%;
     margin-right: 25%;
     border-radius: 5px;
+    background-color: white;
     }
 .form-control{
     display: block;

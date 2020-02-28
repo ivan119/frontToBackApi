@@ -22,10 +22,11 @@
           <hr>
           <br>
           <div v-if="$auth.loggedIn">
-          <button @click="postFavourite()">Add to favourites</button>
+          <button class="button--green" @click="postFavourite()">Add to favourites</button>
+          <button class="button--green" @click="postFavourite()">Remove from favourites</button>
           </div>
            <div v-else>
-          <button @click="notLoggedIn()">Add to favourites</button>
+          <button class="button--green" @click="notLoggedIn()">Add to favourites</button>
           </div>
         </div>
       </article>
@@ -38,7 +39,7 @@ import axios from 'axios'
 export default {
   data(){
     return{
-      singleMovie:{}
+      singleMovie:{},
     }
   },
   async asyncData({params}){

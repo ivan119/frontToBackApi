@@ -82,7 +82,6 @@ html {
 }
 body{
     background-image: url('https://wallpaperaccess.com/full/1159285.jpg');
-
 }
 .button--green {
   display: inline-block;
@@ -216,7 +215,7 @@ a:active .movie-content {
 .footer-distributed .footer-left,
 .footer-distributed .footer-center,
 .footer-distributed .footer-right{
-	display: inline-block;
+	  display: inline-block;
     vertical-align: top;
     padding-top: 30px;
 }
@@ -260,7 +259,8 @@ a:active .movie-content {
  
 .footer-distributed .footer-center{
   width: 35%;
-  margin-top: 1%;
+  margin-top: 2%;
+  padding-left: 2.5%;
 }
 .footer-distributed .footer-center i{
 	background-color:  #33383b;
@@ -301,8 +301,8 @@ a:active .movie-content {
  
 .footer-distributed .footer-right{
     width: 20%;
-    margin-top: -30px;
-}
+    margin-top: -20px;
+  }
  
 .footer-distributed .footer-company-about{
 	line-height: 20px;
@@ -340,7 +340,7 @@ a:active .movie-content {
 	margin-right: 3px;
 	margin-bottom: 5px;
 }
-@media (max-width: 880px) {
+@media (max-width: 1220px) {
  
 	.footer-distributed{
     font: bold 14px sans-serif;

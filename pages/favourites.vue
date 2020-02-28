@@ -51,7 +51,8 @@ export default {
     if(this.$auth.user){
       const res = this.$axios.get('http://127.0.0.1:3333/users/getFavourite/' + this.$auth.user.id)
         .then((res)=>{
-          this.favouriteMovies = res.data.data
+           this.favouriteMovies = res.data.data
+           console.log('hello')
         })
     }
   }

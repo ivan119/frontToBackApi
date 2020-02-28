@@ -153,7 +153,7 @@ import { required, email, minLength, maxLength } from 'vuelidate/lib/validators'
     background-color: transparent;
     border: 1px solid #aeaeae;
     border-radius: 3px;
-    margin-bottom: 25px;
+    margin-bottom: 27px;
     opacity: .8;
     transition: all 1s;
 }
