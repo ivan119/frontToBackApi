@@ -30,6 +30,7 @@ export default {
   */
   plugins: [
     {src: '~/plugins/Vuelidate'},
+    {src: '~/plugins/dateFilter.js'}
   ],
   /*
   ** Nuxt.js dev-modules

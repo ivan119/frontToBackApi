@@ -7,7 +7,7 @@
           <div class="movie-content">
               <h1>{{ title }}</h1>
               <h1>Vote average: {{ vote_average }}\10</h1>
-              <h1>Release date: {{ release_date }}</h1>
+              <h1>Release date: {{ release_date | date }}</h1>
           </div>
       </article>
   </nuxt-link>

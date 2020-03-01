@@ -7,7 +7,7 @@
       <div v-if="favouriteMovies.length > 0 ">
      <section class="movies-list">
       <!--Loop for all movies from store  -->    
-        <nuxt-link v-for="movie in favouriteMovies.reverse()" :key="movie.id" :to="'/' + movie.id"  class="post-preview">
+        <nuxt-link v-for="movie in favouriteMovies " :key="movie.id" :to="'/' + movie.id"  class="post-preview">
         <article class="movie-preview" >
           <div
                 class="movie-thumbnail" 
@@ -15,7 +15,7 @@
           <div class="movie-content">
             <h1>{{ movie.title }}</h1>
             <h1>Average Vote: {{ movie.vote_average }}/10</h1>
-            <h1>Release Date: {{ movie.release_date }}</h1>
+            <h1>Release Date: {{ movie.release_date | date }}</h1>
           </div>
         </article>
       </nuxt-link>
@@ -42,10 +42,10 @@
 <script>
 import axios from 'axios'
 export default { 
-  middleware: 'authenticated',
+  middleware: 'notAuthenticated',
   data(){
     return{
-      favouriteMovies:{}
+      favouriteMovies:[]
     }
   },
   created(){
@@ -53,7 +53,7 @@ export default {
       const res = this.$axios.get('http://127.0.0.1:3333/users/getFavourite/' + this.$auth.user.id)
         .then((res)=>{
            this.favouriteMovies = res.data.data
-           console.log('hello')
+           this.favouriteMovies.reverse()
         })
     }
   }

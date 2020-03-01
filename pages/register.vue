@@ -28,6 +28,7 @@ import { required, email, minLength, maxLength } from 'vuelidate/lib/validators'
 
 import axios from 'axios'
 export default {
+  middleware: 'authenticated',
     data(){
         return{
             form:{
@@ -122,6 +123,13 @@ export default {
   color: #fff;
   background-color: #3b8070;
   cursor: pointer;
+}
+
+@media (max-width: 850px) {
+  .form{
+    margin-left: 2%;
+    margin-right: 2%;
+  }
 }
 
 </style>

@@ -15,7 +15,7 @@
           <hr>
           <h3>Average Vote: {{ singleMovie.vote_average }}/10</h3>
           <hr>
-          <h3>Release date: {{ singleMovie.release_date }}</h3>
+          <h3>Release date: {{ singleMovie.release_date | date }}</h3>
           <hr>
           <h3>Overview:</h3>
           <h4>{{ singleMovie.overview }}</h4>

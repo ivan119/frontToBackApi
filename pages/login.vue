@@ -24,6 +24,7 @@
 import { required, email, minLength, maxLength } from 'vuelidate/lib/validators'
 
 export default {
+  middleware: 'authenticated',
     data(){
         return{
           form:{
@@ -113,4 +114,10 @@ export default {
   cursor: pointer;
 }
 
+@media (max-width: 850px) {
+  .form{
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+}
 </style>

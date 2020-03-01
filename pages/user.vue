@@ -10,15 +10,16 @@
             <br>
             <h3>Email: {{$auth.user.email}}</h3>
             <br>
-            <h3>Joined at : {{$auth.user.created_at}}</h3>
+            <h3>Joined at : {{$auth.user.created_at | date }}</h3>
           </div>    
       </section>
   </div>
 </template>
 
 <script>
-export default {
 
+export default {
+middleware: 'notAuthenticated',
 }
 </script>
 
