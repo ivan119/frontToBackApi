@@ -1,11 +1,11 @@
 <template>
 <div>
  <!--Single movie details by ID -->
-  <div class="intro" :style="{ backgroundImage:'url(' + singleMovie.background_image + ')' }">
+  <section class="intro" :style="{ backgroundImage:'url(' + singleMovie.background_image + ')' }">
   <h1>
     {{singleMovie.title}}
   </h1>
-  </div> 
+  </section> 
     <div>
      <article class="movie-preview">
        <div   class="movie-thumbnail" 
@@ -22,8 +22,8 @@
           <hr>
           <br>
           <div v-if="$auth.loggedIn">
-          <button class="button--green" @click="postFavourite()">Add to favourites</button>
-          <button class="button--green" @click="postFavourite()">Remove from favourites</button>
+          <button class="button--green" @click="addOrRemoveFavourite()">Add Or Remove Favourite</button>
+       <!--   <button class="button--green" @click="addOrRemoveFavourite()">Remove from favourites</button>  -->
           </div>
            <div v-else>
           <button class="button--green" @click="notLoggedIn()">Add to favourites</button>
@@ -36,6 +36,7 @@
 
 <script>
 import axios from 'axios'
+import Swal from "sweetalert2";
 export default {
   data(){
     return{
@@ -49,9 +50,9 @@ export default {
       }
   },
   methods:{
-    async postFavourite(){
+    async addOrRemoveFavourite(){
         await this.$axios.post('http://127.0.0.1:3333/movies/' + this.singleMovie.id)
-        alert('Movie added to favourites!')
+        Swal.fire('Sucess','Movie added or removed from favourites!')
     },
     notLoggedIn(){
       alert('Please Register or Login so you can add movie to favourites!')

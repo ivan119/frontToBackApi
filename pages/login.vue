@@ -1,8 +1,8 @@
 <template>
   <div>
-      <div class="intro">
+      <section class="intro">
           <h1>Login</h1>
-      </div>
+      </section>
       <div class="container">
          <form class="form" id="myForm" @submit.prevent="login">
             <div class="row" >

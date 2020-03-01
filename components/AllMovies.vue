@@ -3,7 +3,7 @@
     <section class="intro">
       <h1>Movies Review</h1>
     </section>
-     <div class="filterBox">
+   <div class="filterBox">
       <button class="button--green" @click="sortBy('title','asc')">Sort By Title (A-Z)</button>            
       <button class="button--green" @click="sortBy('title','desc')">Sort By Title (Z-A)</button>
       <button class="button--green" @click="sortBy('vote_average','desc')">Sort By Highest Votes</button>

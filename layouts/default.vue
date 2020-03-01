@@ -81,7 +81,9 @@ html {
   margin: 0;
 }
 body{
-    background-image: url('https://wallpaperaccess.com/full/1159285.jpg');
+  background-image: url('https://wallpaperaccess.com/full/1159285.jpg'); 
+  background-repeat: cover;
+
 }
 .button--green {
   display: inline-block;

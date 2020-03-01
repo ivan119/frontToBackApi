@@ -11,7 +11,7 @@
       <ul v-if="$auth.loggedIn" 
         class="nav-list"
         @click="$emit('close')">
-        <li class="nav-item"><a>{{$auth.user.username}}</a></li>
+        <li class="nav-item"><nuxt-link to="/user">{{$auth.user.username}}</nuxt-link></li>
         <li class="nav-item"> <nuxt-link to="/favourites">Favourites</nuxt-link></li>
         <li class="nav-item"><nuxt-link to="/about">About</nuxt-link></li>
         <li class="nav-item"><a @click="$auth.logout()">Logout</a></li>
@@ -96,6 +96,7 @@ export default {
   text-decoration: none;
   color: black;
   font-size: 1.5rem;
+  cursor: pointer;
 }
 
 .nav-item a:hover,
