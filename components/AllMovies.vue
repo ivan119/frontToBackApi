@@ -13,7 +13,12 @@
       <input class="input" @input="searching" type="text" v-model="search" placeholder="Search...">
   </div>
   <!-- Pagination --->
-  
+  <div class="pag-buttons">
+    <button @click="decrement()" class="button--grey">Prev</button>
+    <button @click="increment()" class="button--grey">Next</button>
+    <h3>Page:{{this.page}} Total Pages: {{this.pagaination.lastPage}}</h3>
+  </div>
+
     <MoviesList :movies="loadedMovies" />
      <div class="noresults" v-if="loadedMovies == 0">
         <article>
@@ -32,6 +37,7 @@
 import MoviesList from '@/components/MoviesList'
 import debounce from 'lodash/debounce'
 import axios from 'axios'
+import integer from 'vuelidate/lib/validators/integer'
 export default {
   components:{
     name:'AllMovies',
@@ -41,21 +47,36 @@ export default {
     return{
       search:'',
       page:1,
+      pagaination:{},
       loadedMovies:{}
     }
   },
   methods:{
     async sortBy(prop,prop2){
-      const res = await axios.get('http://127.0.0.1:3333/movies?search=' + this.search + '&orderBy=' + prop + '&order=' + prop2 + '&page='+ 1 + '&perPage=' + 7 )
+      const res = await axios.get('http://127.0.0.1:3333/movies?orderBy=' + prop + '&order=' + prop2 + '&page='+ this.page + '&perPage=' + 8 + '&search=' + this.search  )
+      this.pagaination = res.data.pagaination
       this.loadedMovies = res.data.pagaination.data
     },
     searching: debounce(function(){
+      this.page = 1;
       this.sortBy('title','asc')
-    },1500)
+    },1500),
+    increment(){
+      if(this.page < this.pagaination.lastPage ){
+          this.page++,
+         this.sortBy('title','asc')
+      }
+    },
+    decrement(){
+      if(this.page >= 2){
+       this.page--,
+       this.sortBy('title','asc')
+      }
+    }
   },
   created(){
     this.sortBy('title','asc')
-  }
+  },
 }
 </script>
 
@@ -79,6 +100,14 @@ export default {
   margin-top: 2px;
   height: 35px;
   }
+.pag-buttons{
+  margin-top: 1%;
+  margin-left: 6%;
+}
+.pag-buttons h3{
+  margin-top: 5px;
+  margin-left: 1%;
+}
 .noresults-thumbnail {
   background-image: url('https://media.giphy.com/media/vupbanYe5f1Xq/giphy.gif');
 }
