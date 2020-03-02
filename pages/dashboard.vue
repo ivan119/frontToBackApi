@@ -37,6 +37,7 @@ import axios from 'axios';
 import { required, email, minLength, maxLength } from 'vuelidate/lib/validators';
 
   export default {
+    middleware: 'isAdmin',
     data() {
       return {
          form:{

@@ -7,14 +7,14 @@
     </div>
     <div class="spacer"></div>
     <div class="navigation-items">
-       <ul v-if="$auth.loggedIn & $auth.user.username != 'admin'"
+       <ul v-if="$auth.loggedIn && $auth.user.username != 'admin'"
             class="nav-list">
         <li class="nav-item"><nuxt-link to="/user">{{$auth.user.username}}</nuxt-link></li>
         <li class="nav-item"><nuxt-link to="/favourites">Favourites</nuxt-link></li>
         <li class="nav-item"><nuxt-link to="/about">About</nuxt-link></li>
         <li class="nav-item"><a @click="$auth.logout()">Logout</a></li>
       </ul>
-       <ul v-if="$auth.loggedIn & $auth.user.username === 'admin'"
+       <ul v-if="$auth.loggedIn && $auth.user.username === 'admin'"
             class="nav-list">
         <li class="nav-item"><nuxt-link to="/user">{{$auth.user.username}}</nuxt-link></li>
         <li class="nav-item"><nuxt-link to="/dashboard">Dashboard</nuxt-link></li>
