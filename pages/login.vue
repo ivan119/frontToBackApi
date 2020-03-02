@@ -53,7 +53,7 @@ export default {
             await this.$auth.loginWith('local',{
               data:this.form
           })
-           Swal.fire({title:'Welcome back',timer:1000})
+           Swal.fire({title:`Welcome Back ${this.$auth.user.username}`,timer:1100})
            this.$router.push({name:'index'})
           } catch (error) {
 

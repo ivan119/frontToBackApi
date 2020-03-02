@@ -30,7 +30,7 @@ export default {
   */
   plugins: [
     {src: '~/plugins/Vuelidate'},
-    {src: '~/plugins/dateFilter.js'}
+    {src: '~/plugins/dateFilter.js'},
   ],
   /*
   ** Nuxt.js dev-modules
@@ -80,7 +80,6 @@ export default {
     /*
     ** You can extend webpack config here
     */
-    
     extend (config, ctx) {
     }
   }

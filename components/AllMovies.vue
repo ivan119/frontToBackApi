@@ -12,6 +12,8 @@
       <button class="button--green" @click="sortBy('release_date','asc')">Sort By Oldest Realese Date</button>
       <input class="input" @input="searching" type="text" v-model="search" placeholder="Search...">
   </div>
+  <!-- Pagination --->
+  
     <MoviesList :movies="loadedMovies" />
      <div class="noresults" v-if="loadedMovies == 0">
         <article>
@@ -28,7 +30,7 @@
 
 <script>
 import MoviesList from '@/components/MoviesList'
-import _ from 'lodash'
+import debounce from 'lodash/debounce'
 import axios from 'axios'
 export default {
   components:{
@@ -38,15 +40,16 @@ export default {
   data(){
     return{
       search:'',
+      page:1,
       loadedMovies:{}
     }
   },
   methods:{
     async sortBy(prop,prop2){
-      const res = await axios.get('http://127.0.0.1:3333/movies?search=' + this.search + '&orderBy=' + prop + '&order=' + prop2)
-      this.loadedMovies = res.data.data
+      const res = await axios.get('http://127.0.0.1:3333/movies?search=' + this.search + '&orderBy=' + prop + '&order=' + prop2 + '&page='+ 1 + '&perPage=' + 7 )
+      this.loadedMovies = res.data.pagaination.data
     },
-    searching: _.debounce(function(){
+    searching: debounce(function(){
       this.sortBy('title','asc')
     },1500)
   },
