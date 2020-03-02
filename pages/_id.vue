@@ -21,11 +21,15 @@
           <h4>{{ singleMovie.overview }}</h4>
           <hr>
           <br>
-          <div v-if="$auth.loggedIn">
+          <div v-if="$auth.loggedIn && $auth.user.username != 'admin'">
           <button class="button--green" @click="addOrRemoveFavourite()">Add Or Remove Favourite</button>
        <!--   <button class="button--green" @click="addOrRemoveFavourite()">Remove from favourites</button>  -->
           </div>
-           <div v-else>
+           <div v-if="$auth.loggedIn && $auth.user.username === 'admin'">
+          <button class="button--green" @click="deleteMovie()">Remove This Movie From Database</button>
+       <!--   <button class="button--green" @click="addOrRemoveFavourite()">Remove from favourites</button>  -->
+          </div>
+           <div v-if="!$auth.loggedIn">
           <button class="button--green" @click="notLoggedIn()">Add to favourites</button>
           </div>
         </div>
@@ -53,6 +57,12 @@ export default {
     async addOrRemoveFavourite(){
         await this.$axios.post('http://127.0.0.1:3333/movies/' + this.singleMovie.id)
         Swal.fire('Sucess','Movie added or removed from favourites!')
+    },
+    async deleteMovie(){
+      await this.$axios.delete('http://127.0.0.1:3333/movies/' + this.singleMovie.id)
+      await this.$router.push('/')
+      Swal.fire('Sucess','Movie Removed From Database!')
+      
     },
     notLoggedIn(){
       alert('Please Register or Login so you can add movie to favourites!')
