@@ -8,7 +8,7 @@
     <div
       v-if="show"
       class="sidenav">
-      <ul v-if="$auth.loggedIn" 
+      <ul v-if="$auth.loggedIn && $auth.user.username != 'admin'" 
         class="nav-list"
         @click="$emit('close')">
         <li class="nav-item"><nuxt-link to="/user">{{$auth.user.username}}</nuxt-link></li>
@@ -16,7 +16,15 @@
         <li class="nav-item"><nuxt-link to="/about">About</nuxt-link></li>
         <li class="nav-item"><a @click="$auth.logout()">Logout</a></li>
       </ul>
-      <ul v-else
+       <ul v-if="$auth.loggedIn && $auth.user.username === 'admin'" 
+        class="nav-list"
+        @click="$emit('close')">
+        <li class="nav-item"><nuxt-link to="/user">{{$auth.user.username}}</nuxt-link></li>
+        <li class="nav-item"> <nuxt-link to="/dashboard">Dashboard</nuxt-link></li>
+        <li class="nav-item"><nuxt-link to="/about">About</nuxt-link></li>
+        <li class="nav-item"><a @click="$auth.logout()">Logout</a></li>
+      </ul>
+      <ul v-if="!$auth.loggedIn"
         class="nav-list"
         @click="$emit('close')">
         <li class="nav-item"><nuxt-link to="/login">Login</nuxt-link></li>

@@ -342,7 +342,7 @@ a:active .movie-content {
 	margin-right: 3px;
 	margin-bottom: 5px;
 }
-@media (max-width: 1220px) {
+@media (max-width: 1250px) {
  
 	.footer-distributed{
     font: bold 14px sans-serif;

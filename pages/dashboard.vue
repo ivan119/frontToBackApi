@@ -4,7 +4,7 @@
           <h1>Welcome to Dashboard {{$auth.user.username}}</h1>
       </section>
        <div class="container">
-        <form class="form" id="myForm" @submit.prevent="postMovie">
+        <form class="form" @submit.prevent="postMovie">
              <div class="row" >
                  <div class="col-md-4" >
                      <input @blur="$v.form.title.$touch()" type="text" v-model="form.title" class="form-control"  placeholder="Title">
@@ -19,12 +19,12 @@
                                 <p v-if="!$v.form.overview.minLength" class="err">Overview must be at least 20 characters!</p> 
                                 <p v-if="!$v.form.overview.maxLength" class="err">Overview to long! Max 200 characters!</p>
                       <input @blur="$v.form.release_date.$touch()" type="text" v-model="form.release_date" class="form-control" placeholder="Date Of Release Like : 2019-07-25">
-                                <p v-if="!$v.form.release_date.minLength" class="err">Please Enter valid Date Like 2020-28-11</p>
+                                <p v-if="!$v.form.release_date.minLength" class="err">Please Enter valid Date Like 2020-08-21</p>
                       <input type="text" @blur="$v.form.cover_image.$touch()" v-model="form.cover_image" class="form-control"  placeholder="Url For Cover Image like: https://image.tmdb.org/t/p/original/c24sv2weTHPsmDa7jEMN0m2P3RT.jpg ">
                                 <p v-if="!$v.form.cover_image.minLength" class="err">Please enter valid Url!</p>  
                       <input type="text" @blur="$v.form.background_image.$touch()" v-model="form.background_image" class="form-control"  placeholder="Url For Background Image like: https://image.tmdb.org/t/p/original/c24sv2weTHPsmDa7jEMN0m2P3RT.jpg ">
                                 <p v-if="!$v.form.background_image.minLength" class="err">Please provide a valid Url!</p>      
-                      <button type="submit" @click="postMovie()" :disabled="$v.$invalid" class="button--green">Submit New Movie</button>
+                      <button type="submit" @click.once="postMovie()" :disabled="$v.$invalid" class="button--green">Submit New Movie</button>
                    </div>
                  </div>
         </form> 
@@ -34,19 +34,20 @@
 
 <script>
 import axios from 'axios';
+import Swal from "sweetalert2";
 import { required, email, minLength, maxLength } from 'vuelidate/lib/validators';
 
   export default {
-    middleware: 'isAdmin',
+    middleware:'isAdmin',
     data() {
       return {
          form:{
-              title: "ssdt",
-              vote_average:"3.9",
-              overview: "Amazing Spiderman 2",
-              release_date:"2017-10-26",
-              cover_image: "https://image.tmdb.org/t/p/original/c24sv2weTHPsmDa7jEMN0m2P3RT.jpg",
-              background_image:"https://image.tmdb.org/t/p/original/vc8bCGjdVp0UbMNLzHnHSLRbBWQ.jpg"
+              title: "",
+              vote_average:"",
+              overview: "",
+              release_date:"",
+              cover_image: "",
+              background_image:""
          }
       }
     },
@@ -83,10 +84,9 @@ import { required, email, minLength, maxLength } from 'vuelidate/lib/validators'
      } 
     },
     methods: {
-       async postMovie(form) {
-        await this.$axios.post('http://127.0.0.1:3333/movies' + form)
-        Swal.fire('Sucess','Good Job Admin Movie Successfully Added To Your Database!')
-        this.$router.push({name:'index'})
+       async postMovie() {
+        await this.$axios.post('http://127.0.0.1:3333/movies', this.form)
+        await Swal.fire('Sucess','Good Job Admin Movie Successfully Added To Your Database!')
       }
     }
   }
