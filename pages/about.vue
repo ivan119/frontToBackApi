@@ -61,8 +61,8 @@
 </template>
 
 <script>
-import { required, email, minLength, maxLength } from 'vuelidate/lib/validators'
-
+import { required, email, minLength, maxLength } from 'vuelidate/lib/validators';
+import Swal from "sweetalert2";
   export default {
     data() {
       return {
@@ -95,8 +95,7 @@ import { required, email, minLength, maxLength } from 'vuelidate/lib/validators'
     },
     methods: {
        async submitForm() {
-        // console.log(this.formInput)
-        await alert('Thank You! The Form Is Submitted Successfully!')
+        Swal.aler('Success','Thank You! The Form Is Submitted Successfully!','Sucess')
         this.$router.push({name:'index'})
       }
     }

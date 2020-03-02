@@ -56,16 +56,17 @@ export default {
   methods:{
     async addOrRemoveFavourite(){
         await this.$axios.post('http://127.0.0.1:3333/movies/' + this.singleMovie.id)
-        Swal.fire('Sucess','Movie added or removed from favourites!')
+        Swal.fire('Sucess','Movie added or removed from favourites!','Sucess')
     },
     async deleteMovie(){
       await this.$axios.delete('http://127.0.0.1:3333/movies/' + this.singleMovie.id)
       await this.$router.push('/')
-      Swal.fire('Sucess','Movie Removed From Database!')
+      Swal.fire('Sucess','Movie Removed From Database!','Sucess')
       
     },
     notLoggedIn(){
-      alert('Please Register or Login so you can add movie to favourites!')
+       Swal.fire('error','Please login to add favourite movie!','error')
+       this.$router.push('/login')
     }
   }
 

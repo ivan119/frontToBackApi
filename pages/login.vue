@@ -21,7 +21,8 @@
 </template>
 
 <script>
-import { required, email, minLength, maxLength } from 'vuelidate/lib/validators'
+import { required, email, minLength, maxLength } from 'vuelidate/lib/validators';
+import Swal from "sweetalert2";
 
 export default {
   middleware: 'authenticated',
@@ -52,6 +53,7 @@ export default {
             await this.$auth.loginWith('local',{
               data:this.form
           })
+           Swal.fire({title:'Welcome back',timer:1000})
            this.$router.push({name:'index'})
           } catch (error) {
 
