@@ -74,64 +74,14 @@ export default {
 </script>
 
 <style scoped>
-/* Organize this better in default layout/Css is repeating! */
 
-.form{
-    margin-top: 5%;
-    border: 1px solid #aeaeae;
-    padding: 50px 25px;
-    margin-left: 25%;
-    margin-right: 25%;
-    border-radius: 5px;
-    background-color: white;
-    }
-.form-control{
-    display: block;
-    width: 100%;
-    height: 50px;
-    padding: 6px 12px;
-    font-size: 14px;
-    line-height: 21px;
-    color: #555;
-    background-color: transparent;
-    border: 1px solid #aeaeae;
-    border-radius: 3px;
-    margin-bottom: 25px;
-    opacity: .8;
-    transition: all 1s;
-}
 .err {
-  width: 50%;
-  position: absolute;
-  margin-top: -22px;
-  padding-bottom: 19px;
-  color: red;
-  white-space: nowrap;
+  margin-top: -27px;
 }
 
 .button--green {
-  display: inline-block;
-  width: 100%;
-  border-radius: 4px;
-  height: 50px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-  flex: 1 1 12%;
-  }
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-  cursor: pointer;
-}
-
-@media (max-width: 850px) {
-  .form{
-    margin-left: 2%;
-    margin-right: 2%;
-  }
+    width: 100%;
+    height: 50px;
 }
 
 </style>

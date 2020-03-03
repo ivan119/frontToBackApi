@@ -14,12 +14,8 @@
             <br>
             <h3>Joined at : {{$auth.user.created_at | date }}</h3>
             <br>
-
-            <div class="buttonsBox">
-               <button @click="isIt()" class="button--grey">Edit Profile</button>
-               <button @click="deleteProfile()" class="button--green">Delete Profile</button>    
-            </div>
-        
+               <button @click="isIt()" class="button--grey1">Edit Profile</button>
+               <button @click="deleteProfile()" class="button--green1">Delete Profile</button>    
           </div>
       </section>
     </div>
@@ -39,10 +35,10 @@
                  <p v-if="!$v.form.password.maxLength" class="err">Password is to Long! 20 characters max!</p> 
 
                  <div class="buttonsBox">
+                 <button @click="itsNot()"  class="button--grey">Back to Profile</button>
                   <button @click="updateProfile()" :disabled="$v.$invalid" class="button--green">Update Profile</button>
                  </div>
                  <br>
-                 <button @click="itsNot()"  class="button--grey">Back to Profile</button>
               </div>
             </div>
         </form>
@@ -102,7 +98,7 @@ middleware: 'notAuthenticated',
         Swal.fire('error',error.response.data.message, 'error') /* <-- If username or email exist in databse popups an error message */
      }
     },
-    async deleteProfile(){  /* <-- This method delte user and all his favourite movies from database */
+    async deleteProfile(){  /* <-- This method delete user and all his favourite movies from database */
       try {
           Swal.fire({
             title: 'Are you sure?',
@@ -151,65 +147,55 @@ middleware: 'notAuthenticated',
 }
 .buttonsBox{
   display: flex;
+  margin-top: 5%;
   }
-/* Organize this better in default layout/Css is repeating! */
 
-form{
-    margin-top: 5%;
-    border: 1px solid #aeaeae;
-    padding: 50px 25px;
-    margin-left: 25%;
-    margin-right: 25%;
-    border-radius: 5px;
-    background-color: white;
-    }
-.form-control{
-    display: block;
-    width: 100%;
-    height: 50px;
-    padding: 6px 12px;
-    font-size: 14px;
-    line-height: 21px;
-    color: #555;
-    background-color: transparent;
-    border: 1px solid #aeaeae;
-    border-radius: 3px;
-    margin-bottom: 25px;
-    opacity: .8;
-    transition: all 1s;
-}
 .err {
-  width: 50%;
-  position: absolute;
-  margin-top: -22px;
-  padding-bottom: 19px;
-  color: red;
-  white-space: nowrap;
+  margin-top: -26px;
 }
 
 .button--green {
+  width: 66%; 
+  height: 50px;
+  margin-left: 3%;
+  }
+.button--grey{
+  width: 33%;
+  height: 50px;
+  margin-top: 2px;
+  margin-left: -1px;
+}
+
+.button--green1 {
   display: inline-block;
-  width: 100%; /* Only this property is changed here, from 100% to current */
   border-radius: 4px;
-  height: 60px;
   border: 1px solid #3b8070;
   color: #3b8070;
   text-decoration: none;
-  }
+  padding: 10px 30px;
+  margin: 2px;
+}
 
-.button--green:hover {
+.button--green1:hover {
   color: #fff;
   background-color: #3b8070;
   cursor: pointer;
+
 }
 
-@media (max-width: 850px) {
-  .form{
-    margin-left: 2%;
-    margin-right: 2%;
-  }
+.button--grey1 {
+  display: inline-block;
+  border-radius: 4px;
+  border: 1px solid #35495e;
+  color: #35495e;
+  text-decoration: none;
+  padding: 10px 30px;
+  margin: 2px;
 }
 
-
-
+.button--grey1:hover {
+  color: #fff;
+  background-color: #35495e;
+  cursor: pointer;
+}
 </style>

@@ -102,81 +102,14 @@ import { required, email, minLength, maxLength } from 'vuelidate/lib/validators'
     background-color: #531b85;
 }
 
-.user-preview{
-    margin-left: 20%;
-    margin-right: 20%;
-    margin-top:3%;
-    width: 60%;
-    border: 1px solid gray;
-    border-radius: 1px;
-    background-color: white;
-}
-.user-profile {
-    width: 100%;
-    height: 300px;
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/PICA.jpg/600px-PICA.jpg');
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
-/* Organize this better in default layout/Css is repeating! */
-
-.form{
-    margin-top: 5%;
-    border: 1px solid #aeaeae;
-    padding: 50px 25px;
-    margin-left: 25%;
-    margin-right: 25%;
-    border-radius: 5px;
-    background-color: white;
-    }
-.form-control{
-    display: block;
-    width: 100%;
-    height: 50px;
-    padding: 12px 12px;
-    font-size: 14px;
-    line-height: 21px;
-    color: #555;
-    background-color: transparent;
-    border: 1px solid #aeaeae;
-    border-radius: 3px;
-    margin-bottom: 27px;
-    opacity: .8;
-    transition: all 1s;
-}
 .err {
-  width: 50%;
-  position: absolute;
-  margin-top: -27px;
-  padding-bottom: 19px;
-  color: red;
-  white-space: nowrap;
+  margin-top: -25px;
 }
 .button--green {
-  display: inline-block;
   width: 100%;
-  border-radius: 4px;
   height: 50px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-  flex: 1 1 12%;
   }
 
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-  cursor: pointer;
-}
 
-@media (max-width: 850px) {
-  .form{
-    margin-left: 2%;
-    margin-right: 2%;
-  }
-}
 
 </style>
