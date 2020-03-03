@@ -16,9 +16,8 @@
   <div class="pag-buttons">
     <button @click="decrement()" class="button--grey">Prev</button>
     <button @click="increment()" class="button--grey">Next</button>
-    <h3>Page:{{this.page}} Total Pages: {{this.pagaination.lastPage}}</h3>
+    <h3>Page:{{this.page}}  Total Pages: {{this.pagaination.lastPage}}</h3>
   </div>
-
     <MoviesList :movies="loadedMovies" />
      <div class="noresults" v-if="loadedMovies == 0">
         <article>
@@ -119,6 +118,14 @@ export default {
   .input {
     height: 39px;
     width: 100%; 
+  }
+  .pag-buttons{
+    height: 50px;
+    margin-bottom: 2%;
+  }
+  .pag-buttons h3{
+    margin-left: 5%;
+
   }
 }
 </style>

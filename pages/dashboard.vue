@@ -120,6 +120,7 @@ import { required, email, minLength, maxLength } from 'vuelidate/lib/validators'
     background-repeat: no-repeat;
 }
 
+/* Organize this better in default layout/Css is repeating! */
 
 .form{
     margin-top: 5%;

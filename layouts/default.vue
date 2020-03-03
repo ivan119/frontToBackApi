@@ -116,6 +116,7 @@ body{
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+  cursor: pointer;
 }
 .intro {
   height: 380px;

@@ -65,6 +65,7 @@ export default {
 </script>
 
 <style scoped>
+/* Organize this better in default layout/Css is repeating! */
 
 .form{
     margin-top: 5%;

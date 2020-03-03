@@ -138,7 +138,7 @@ import Swal from "sweetalert2";
     margin-top: 45px;
 }
 
-/* Contact Us Form */
+/* Organize this better in default layout/Css is repeating! */
 .contact-us-form .form-control{
     display: block;
     width: 50%;
