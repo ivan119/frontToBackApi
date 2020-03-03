@@ -198,4 +198,15 @@ middleware: 'notAuthenticated',
   background-color: #35495e;
   cursor: pointer;
 }
+
+@media (max-width:850px) {
+  .user-preview{
+    margin-left: 15%;
+    margin-right: 15%;
+    width: 70%;
+  }
+  .button--grey{
+    padding: 10px 10px;
+  }
+}
 </style>
