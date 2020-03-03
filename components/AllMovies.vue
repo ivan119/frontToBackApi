@@ -16,7 +16,7 @@
   <div class="pag-buttons">
     <button @click="decrement()" class="button--grey">Prev</button>
     <button @click="increment()" class="button--grey">Next</button>
-    <h3>Page:{{this.page}}  Total Pages: {{this.pagaination.lastPage}}</h3>
+    <h3>Page:{{this.page}}  Total Pages: {{this.lastPage}}</h3>
   </div>
     <MoviesList :movies="loadedMovies" />
      <div class="noresults" v-if="loadedMovies == 0">
@@ -46,14 +46,14 @@ export default {
     return{
       search:'',
       page:1,
-      pagaination:{},
+      lastPage:'',
       loadedMovies:{}
     }
   },
   methods:{
     async sortBy(prop,prop2){
       const res = await axios.get('http://127.0.0.1:3333/movies?orderBy=' + prop + '&order=' + prop2 + '&page='+ this.page + '&perPage=' + 8 + '&search=' + this.search  )
-      this.pagaination = res.data.pagaination
+      this.lastPage = res.data.pagaination.lastPage
       this.loadedMovies = res.data.pagaination.data
     },
     searching: debounce(function(){
@@ -61,7 +61,7 @@ export default {
       this.sortBy('title','asc')
     },1500),
     increment(){
-      if(this.page < this.pagaination.lastPage ){
+      if(this.page < this.lastPage ){
           this.page++,
          this.sortBy('title','asc')
       }
@@ -91,6 +91,9 @@ export default {
   box-sizing: border-box;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+.button--green{
+    flex: 12%;
 }
 .input {
   width: 100%;

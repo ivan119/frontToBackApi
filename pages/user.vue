@@ -95,8 +95,9 @@ middleware: 'notAuthenticated',
    async updateProfile(){
      try {
         await this.$axios.patch('http://127.0.0.1:3333/users/update/'+ this.$auth.user.id, this.form)
-        Swal.fire('success','Profile Successfully Updated','sucess')
-        window.location.reload(true) /* <-- This function refreshes page so we can fetch new user data */
+        Swal.fire('success','Profile Successfully Updated','success')
+          setTimeout(() => window.location.reload(true) /* <-- This function refreshes page so we can fetch new user data */
+           ,1500)
      } catch (error) {
         Swal.fire('error',error.response.data.message, 'error') /* <-- If username or email exist in databse popups an error message */
      }
@@ -150,8 +151,7 @@ middleware: 'notAuthenticated',
 }
 .buttonsBox{
   display: flex;
-  justify-content: space-evenly;
-}
+  }
 /* Organize this better in default layout/Css is repeating! */
 
 form{
@@ -191,12 +191,10 @@ form{
   display: inline-block;
   width: 100%; /* Only this property is changed here, from 100% to current */
   border-radius: 4px;
-  height: 50px;
+  height: 60px;
   border: 1px solid #3b8070;
   color: #3b8070;
   text-decoration: none;
-  padding: 10px 30px;
-  flex: 1 1 12%;
   }
 
 .button--green:hover {

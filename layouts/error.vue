@@ -17,12 +17,13 @@
 
 <script>
 export default {
-   props: ['error']
+   props: ['error'],
+   lyout: 'default'
 }
 </script>
 
 <style scoped>
 .error{
-    margin-left: 25%;
+    margin-left:33%;
 }
 </style>

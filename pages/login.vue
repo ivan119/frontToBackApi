@@ -53,7 +53,7 @@ export default {
             await this.$auth.loginWith('local',{
               data:this.form
           })
-           Swal.fire({title:`Welcome Back ${this.$auth.user.username}`,timer:1100})
+           Swal.fire('success',`Welcome Back ${this.$auth.user.username}`,'success')
            this.$router.push({name:'index'})
           } catch (error) {
 
@@ -65,7 +65,6 @@ export default {
 </script>
 
 <style scoped>
-/* Organize this better in default layout/Css is repeating! */
 
 .form{
     margin-top: 5%;
