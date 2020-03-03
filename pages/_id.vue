@@ -21,17 +21,19 @@
           <h4>{{ singleMovie.overview }}</h4>
           <hr>
           <br>
+
           <div v-if="$auth.loggedIn && $auth.user.username != 'admin'">
           <button class="button--green" @click="addOrRemoveFavourite()">Add Or Remove Favourite</button>
-       <!--   <button class="button--green" @click="addOrRemoveFavourite()">Remove from favourites</button>  -->
           </div>
+
            <div v-if="$auth.loggedIn && $auth.user.username === 'admin'">
           <button class="button--green" @click="deleteMovie()">Remove This Movie From Database</button>
-       <!--   <button class="button--green" @click="addOrRemoveFavourite()">Remove from favourites</button>  -->
           </div>
+
            <div v-if="!$auth.loggedIn">
           <button class="button--green" @click="notLoggedIn()">Add to favourites</button>
           </div>
+          
         </div>
       </article>
     </div>
@@ -56,15 +58,17 @@ export default {
   methods:{
     async addOrRemoveFavourite(){
         await this.$axios.post('http://127.0.0.1:3333/movies/' + this.singleMovie.id)
-        Swal.fire('Sucess','Movie added or removed from favourites!','Sucess')
+          .then((res)=>{
+            Swal.fire('success',res.data.message,'success')
+          })
     },
-    async deleteMovie(){
+    async deleteMovie(){ /* <-- This method can only be triggered by admin */
       await this.$axios.delete('http://127.0.0.1:3333/movies/' + this.singleMovie.id)
       await this.$router.push('/')
-      Swal.fire('Sucess','Movie Removed From Database!','Sucess')
+      Swal.fire('success','Movie Removed From Database!','success')
       
     },
-    notLoggedIn(){
+    notLoggedIn(){ 
        Swal.fire('error','Please login to add favourite movie!','error')
        this.$router.push('/login')
     }

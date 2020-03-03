@@ -4,6 +4,7 @@
       <h1 v-if="$auth.user">{{$auth.user.username}} Favourite Movies</h1>
       <h1 v-else>Favourite Movies</h1>
     </section>
+
       <div v-if="favouriteMovies.length > 0 ">
      <section class="movies-list">
       <!--Loop for all movies from store  -->    
@@ -19,8 +20,10 @@
           </div>
         </article>
       </nuxt-link>
+
       </section>
       </div>
+
         <div v-else 
              class="noresults">
             <article>
@@ -36,6 +39,7 @@
                 </div>
            </article>
         </div>
+
     </div>
 </template>
 
@@ -50,11 +54,11 @@ export default {
     }
   },
   created(){
-    if(this.$auth.user){
+    if(this.$auth.user){ /* <-- Method is implemented this way cuz we need to get this.$auth.user.id */
       const res = this.$axios.get('http://127.0.0.1:3333/users/getFavourite/' + this.$auth.user.id)
         .then((res)=>{
            this.favouriteMovies = res.data.data
-           this.favouriteMovies.reverse()
+           this.favouriteMovies.reverse()  /* <-- Reverse so it can looks like it is unshifted to Array */
         })
     }
   }

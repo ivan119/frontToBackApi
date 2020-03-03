@@ -14,14 +14,19 @@
             <br>
             <h3>Joined at : {{$auth.user.created_at | date }}</h3>
             <br>
-             <button @click="isIt()" class="button--green">Edit Profile</button>    
+
+            <div class="buttonsBox">
+               <button @click="isIt()" class="button--grey">Edit Profile</button>
+               <button @click="deleteProfile()" class="button--green">Delete Profile</button>    
+            </div>
+        
           </div>
       </section>
     </div>
 
     <div v-else>
        <div class="container">
-         <form class="form" id="myForm" @submit.prevent="updateProfile" >
+         <form class="form" id="myForm" @submit.prevent="updateProfile()" >
             <div class="row" >
               <div class="">
                  <input type="text" @blur="$v.form.username.$touch()" v-model="form.username" class="form-control" id="name" placeholder="Username">
@@ -32,7 +37,12 @@
                  <input type="password" @blur="$v.form.password.$touch()" v-model="form.password" class="form-control" id="subject" placeholder="Password">
                  <p v-if="!$v.form.password.minLength" class="err">Password is to short! 4 characters min!</p>
                  <p v-if="!$v.form.password.maxLength" class="err">Password is to Long! 20 characters max!</p> 
-                 <button @click="updateProfile" :disabled="$v.$invalid" class="button--green">Update Profile</button>
+
+                 <div class="buttonsBox">
+                  <button @click="updateProfile()" :disabled="$v.$invalid" class="button--green">Update Profile</button>
+                 </div>
+                 <br>
+                 <button @click="itsNot()"  class="button--grey">Back to Profile</button>
               </div>
             </div>
         </form>
@@ -79,6 +89,9 @@ middleware: 'notAuthenticated',
     isIt(){
       this.thatsTrue = false
     },
+    itsNot(){
+      this.thatsTrue = true
+    },
    async updateProfile(){
      try {
         await this.$axios.patch('http://127.0.0.1:3333/users/update/'+ this.$auth.user.id, this.form)
@@ -87,7 +100,32 @@ middleware: 'notAuthenticated',
      } catch (error) {
         Swal.fire('error',error.response.data.message, 'error') /* <-- If username or email exist in databse popups an error message */
      }
-    } 
+    },
+    async deleteProfile(){  /* <-- This method delte user and all his favourite movies from database */
+      try {
+          Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.value) {
+              this.$axios.delete('http://127.0.0.1:3333/users/delete/'+ this.$auth.user.id)
+              this.$auth.logout()
+              Swal.fire(
+                'Deleted!',
+                'You succesfully deleted your profile.',
+                'success'
+              )
+            }
+          })
+      } catch (error) {
+        Swal.fire('error',error.response.data.message, 'error') 
+      }
+    }
   }  
 }
 </script>
@@ -110,7 +148,10 @@ middleware: 'notAuthenticated',
     background-size: contain;
     background-repeat: no-repeat;
 }
-
+.buttonsBox{
+  display: flex;
+  justify-content: space-evenly;
+}
 /* Organize this better in default layout/Css is repeating! */
 
 form{
