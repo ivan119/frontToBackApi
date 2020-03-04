@@ -7,8 +7,8 @@
 
       <div v-if="favouriteMovies.length > 0 ">
      <section class="movies-list">
-      <!--Loop for all movies from store  -->    
-        <nuxt-link v-for="movie in favouriteMovies " :key="movie.id" :to="'/' + movie.id"  class="post-preview">
+      <!--Loops favourite movies for each user from database  -->    
+        <nuxt-link v-for="movie in favouriteMovies " :key="movie.id" :to="'/' + movie.id">
         <article class="movie-preview" >
           <div
                 class="movie-thumbnail" 
@@ -19,11 +19,10 @@
             <h1>Release Date: {{ movie.release_date | date }}</h1>
           </div>
         </article>
-      </nuxt-link>
-
+       </nuxt-link>
       </section>
       </div>
-
+    <!--When user didn't chose any favourite movie yet this will show -->
         <div v-else 
              class="noresults">
             <article>
@@ -53,12 +52,12 @@ export default {
       favouriteMovies:[]
     }
   },
-  created(){
-    if(this.$auth.user){ /* <-- Method is implemented this way cuz we need to get this.$auth.user.id */
+  created(){ /* <-- Method is implemented this way cuz we need to get this.$auth.user.id, won't work in asyncData*/
+    if(this.$auth.user){ 
       const res = this.$axios.get('http://127.0.0.1:3333/users/getFavourite/' + this.$auth.user.id)
         .then((res)=>{
            this.favouriteMovies = res.data.data
-           this.favouriteMovies.reverse()  /* <-- Reverse so it can looks like it is unshifted to Array */
+           this.favouriteMovies.reverse()  /* <-- Reverse so it looks like it is unshifted to Array */
         })
     }
   }

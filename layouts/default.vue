@@ -169,12 +169,13 @@ a:active .movie-content {
   background-size: cover;
 }
 
-/* Forms css for login,register, about etc */
+/* Css for login,register, about etc */
 
 .form{
     margin-top: 5%;
     border: 1px solid #aeaeae;
     padding: 50px 25px;
+    padding-bottom: 33px;
     margin-left: 25%;
     margin-right: 25%;
     border-radius: 5px;

@@ -19,7 +19,7 @@
           </div>
       </section>
     </div>
-
+    <!--User Update Profile-->
     <div v-else>
        <div class="container">
          <form class="form" id="myForm" @submit.prevent="updateProfile()" >
@@ -145,6 +145,9 @@ middleware: 'notAuthenticated',
     background-size: contain;
     background-repeat: no-repeat;
 }
+.form{
+  padding-bottom: 10px;
+}
 .buttonsBox{
   display: flex;
   margin-top: 5%;
@@ -154,6 +157,7 @@ middleware: 'notAuthenticated',
   margin-top: -26px;
 }
 
+/* Buttons are changed a bit here so they can fit proper */
 .button--green {
   width: 66%; 
   height: 50px;

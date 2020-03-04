@@ -3,7 +3,7 @@
     <section class="intro">
       <h1>About</h1>
     </section>
-  <!--About us -->      
+  <!--About us-->      
     <div class="contanier">
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
@@ -18,7 +18,7 @@
                 </div>
             </div>
      </div>
-  <!--Contact us -->      
+  <!--Contact us-->      
     <section class="contact-us">
             <div class="container">
                 <div class="row">
@@ -90,7 +90,7 @@ import Swal from "sweetalert2";
       text:{
         required,
         minLength: minLength(20),
-        maxLength: maxLength(200)
+        maxLength: maxLength(1001)
       }
     },
     methods: {

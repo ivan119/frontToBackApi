@@ -101,10 +101,16 @@ export default {
   color: white;
 }
 
-.nav-item a:hover,
+.nav-item a:hover{
+  cursor: pointer;
+  color: #3b8070;
+}
 .nav-item a:active,
 .nav-item a.nuxt-link-active {
   color: #3b8070;
   cursor: pointer;
+  border: 1px solid #3b8070;
+  border-radius: 3px;
+  padding: 9px;
 }
 </style>

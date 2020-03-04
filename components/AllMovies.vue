@@ -12,14 +12,16 @@
       <button class="button--green" @click="sortBy('release_date','asc')">Sort By Oldest Realese Date</button>
       <input class="input" @input="searching" type="text" v-model="search" placeholder="Search...">
   </div>
-  <!-- Pagination --->
+  <!-- Pagination soulution --->
   <div class="pag-buttons">
     <button @click="decrement()" class="button--grey">Prev</button>
     <button @click="increment()" class="button--grey">Next</button>
     <h3>Page:{{this.page}}  Total Pages: {{this.lastPage}}</h3>
   </div>
+
     <MoviesList :movies="loadedMovies" />
-     <div class="noresults" v-if="loadedMovies == 0">
+
+     <div class="noresults" v-if="loadedMovies == 0"> <!--If we don't have movie that user is searching for, loadedMovies will be empty and then we display this div -->
         <article>
         <div class="noresults-thumbnail"></div>
         <div class="noresults-content">
@@ -29,6 +31,7 @@
         </div>
       </article>
     </div>
+    
   </div>
 </template>
 
@@ -57,7 +60,7 @@ export default {
       this.loadedMovies = res.data.pagaination.data
     },
     searching: debounce(function(){
-      this.page = 1;
+      this.page = 1; /* <--Page needs to be set on page 1 so we can display search results, we can't display them on page2,page3 etc.. beacuse in that case they wouldn't exist */
       this.sortBy('title','asc')
     },1500),
     increment(){
@@ -73,7 +76,7 @@ export default {
       }
     }
   },
-  created(){
+  created(){ /* <--This method is triggered so we can show some data when we vist page */
     this.sortBy('title','asc')
   },
 }
@@ -90,7 +93,6 @@ export default {
   display: flex;
   box-sizing: border-box;
   flex-wrap: wrap;
-  justify-content: space-between;
 }
 .button--green{
     flex: 12%;
@@ -113,7 +115,8 @@ export default {
 .noresults-thumbnail {
   background-image: url('https://media.giphy.com/media/vupbanYe5f1Xq/giphy.gif');
 }
-  @media (max-width: 768px) {
+
+@media (max-width: 768px) {
   .filterBox {
     flex-direction: column;
     margin-top: 4%;

@@ -11,11 +11,10 @@
                                 <p v-if="!$v.form.title.minLength" class="err">Title is to short! 3 characters min!</p>
                                 <p v-if="!$v.form.title.maxLength" class="err">Title is to Long! 20 characters max!</p>    
                       <input type="text" @blur="$v.form.vote_average.$touch()" v-model="form.vote_average" class="form-control"  placeholder="Vote Average 1-10">
-                                <p v-if="!$v.form.vote_average.minLength" class="err">Please enter Number here 1-10!</p>  
-                                
+                                <p v-if="!$v.form.vote_average.minLength" class="err">Please enter Number from 1-10! Could be 9.6 etc...</p>      
                  </div> 
-                    <div class="col-md-8">
-                      <textarea @blur="$v.form.overview.$touch()" type="text" v-model="form.overview" class="form-control" placeholder="Overview Of Movie..."  cols="30" rows="20"></textarea>
+                  <div class="col-md-8">
+                      <textarea @blur="$v.form.overview.$touch()" type="text" v-model="form.overview" class="form-control" placeholder="Overview Of Movie..." id="message"  cols="30" rows="20"></textarea>
                                 <p v-if="!$v.form.overview.minLength" class="err">Overview must be at least 20 characters!</p> 
                                 <p v-if="!$v.form.overview.maxLength" class="err">Overview to long! Max 200 characters!</p>
                       <input @blur="$v.form.release_date.$touch()" type="text" v-model="form.release_date" class="form-control" placeholder="Date Of Release Like : 2019-07-25">
@@ -25,8 +24,8 @@
                       <input type="text" @blur="$v.form.background_image.$touch()" v-model="form.background_image" class="form-control"  placeholder="Url For Background Image like: https://image.tmdb.org/t/p/original/c24sv2weTHPsmDa7jEMN0m2P3RT.jpg ">
                                 <p v-if="!$v.form.background_image.minLength" class="err">Please provide a valid Url!</p>      
                       <button type="submit" @click.once="postMovie()" :disabled="$v.$invalid" class="button--green">Submit New Movie</button>
-                   </div>
                  </div>
+              </div>
         </form> 
       </div>
   </div>
@@ -65,7 +64,7 @@ import { required, email, minLength, maxLength } from 'vuelidate/lib/validators'
       overview:{
         required,
         minLength: minLength(8),
-        maxLength: maxLength(420)
+        maxLength: maxLength(1001)
       },
       release_date:{
         required,
@@ -109,7 +108,10 @@ import { required, email, minLength, maxLength } from 'vuelidate/lib/validators'
   width: 100%;
   height: 50px;
   }
-
+#message {
+    height: 96px;
+    resize: none;
+}
 
 
 </style>
