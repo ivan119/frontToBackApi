@@ -94,7 +94,7 @@ import Swal from "sweetalert2";
       }
     },
     methods: {
-       async submitForm() {
+       async submitForm() { /* <--This feature is not connected to beckend, only prompts an alert for demo purpose */ 
         Swal.aler('Success','Thank You! The Form Is Submitted Successfully!','Sucess')
         this.$router.push({name:'index'})
       }
@@ -127,7 +127,6 @@ import Swal from "sweetalert2";
     background-color: #3b8070;
     margin-left: -30px;
 }
-
 
 .section-title p {
     color: rgb(0, 0, 0);

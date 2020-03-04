@@ -50,10 +50,14 @@ export default {
     }
   },
   async asyncData({params}){
-    const res = await axios.get('http://127.0.0.1:3333/movies/'+ params.id)
-      return{
+     try{
+      const res = await axios.get('http://127.0.0.1:3333/movies/'+ params.id)
+        return{
         singleMovie: res.data.data
-      }
+        }
+    }catch(error){
+      
+    }
   },
   methods:{
     async addOrRemoveFavourite(){
